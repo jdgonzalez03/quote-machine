@@ -12,16 +12,16 @@ h1{
 }
 
 section{
-  max-width: 600px;
+  max-width: 550px;
   background-color: white;
-  border: 2px solid black;
+  border: 2px solid transparent;
   border-radius: 10px;
   padding: 2em;
   margin: 1em;
 }
 
 h2{
-  font-size: 1.3em;
+  font-size: 1.4em;
   text-align: center;
   padding: .25em;
 }
@@ -34,7 +34,7 @@ aside{
 p {
   font-size: 0.9em;
   text-align: left;
-  padding: 16px;
+  padding: 16px 0;
 }
 
 p::before{
@@ -45,4 +45,55 @@ p::before{
   display: flex;
   justify-content: space-between;
 }
+
+footer{
+  color: #ddd;
+}
+
+footer span{
+  color: #eee;
+  text-shadow: 1px 1px 0.25em #eee;
+}
+
+a{
+  text-decoration: none;
+  height: 30px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+}
+
+a, button{
+  padding: 8px;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button{
+  font-size: 0.9em;
+}
+
+a:hover, button:hover{
+  opacity: 0.8;
+}
+
+@media screen and ( min-width: 720px) {
+  h2{
+    font-size: 1.8em;
+  }
+
+  button{
+    font-size: 1em;
+    padding: 8px 10px;
+  }
+
+  a{
+    font-size: 1.3em;
+  }
+}
+
 

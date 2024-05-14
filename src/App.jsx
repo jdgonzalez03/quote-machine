@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { Button } from "./components/Button";
-import { useEffect } from "react";
 import { base_url, generateColors, transition } from "./constants";
 
 function App() {
@@ -15,7 +14,7 @@ function App() {
       .then((data) => {
         setQuotes(data);
 
-        //On first load display a random quote
+        // On first load display a random quote
         const randomIndex = Math.floor(Math.random() * data.length);
         setQuote(data[randomIndex]);
       })
@@ -23,20 +22,19 @@ function App() {
   }, []);
 
   const newQuote = () => {
-    const index = Math.floor(Math.random() * (quotes.length - 0) + 0);
+    const index = Math.floor(Math.random() * quotes.length);
     setQuote(quotes[index]);
     setRandomColor(generateColors());
   };
 
+  const quoteStyle = {
+    backgroundColor: randomColor,
+    transition,
+  };
+
   return (
     <>
-      <div
-        className="app"
-        style={{
-          backgroundColor: randomColor,
-          transition,
-        }}
-      >
+      <div className="app" style={quoteStyle}>
         <section id="quote-box">
           <h2 id="text">{quote.quote}</h2>
           <aside>
@@ -50,10 +48,16 @@ function App() {
                 `"${quote.quote}" - ${quote.author}`
               )}`}
               target="_blank"
+              style={quoteStyle}
             >
-              Tweet this quote
+              <i className="fa fa-twitter"></i>
             </a>
-            <Button id="new-quote" className="btn" onClick={newQuote}>
+            <Button
+              id="new-quote"
+              className="btn"
+              onClick={newQuote}
+              style={quoteStyle}
+            >
               Next Quote
             </Button>
           </aside>
